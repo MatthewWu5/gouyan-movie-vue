@@ -9,9 +9,9 @@
             <div class="co-posters"><img :src="item.images.small" :alt="item.alt"></div>
             <div class="co-movieMsg">
               <h2>{{ item.title }}</h2>
-              <p>导演: {{ item.directors[0].name}}</p>
+              <p>导演: {{ item.directors[0]?item.directors[0].name:'directors_undefined'}}</p>
               <p>
-                主演:{{ item.casts[0].name}}
+                主演:{{ item.casts[0]?item.casts[0].name:'casts_undefined'}}
                 <span v-if="item.casts[1]">, {{ item.casts[1].name }}</span>
               </p>
               <p>类型: {{item.genres.join(', ')}}</p>
@@ -46,6 +46,7 @@ export default {
           this.guodu = false
           this.coming_soon_data = response
           this.coming_soon_data_body = response.body
+          
           this.coming_soon_data_body_subjects = response.body.subjects
         })
         .catch(function (response) {

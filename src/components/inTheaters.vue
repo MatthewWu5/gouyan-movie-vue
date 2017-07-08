@@ -10,9 +10,9 @@
               <h2>{{ item.title }}</h2>
               <star :score="item.rating.average"></star>
               <p>{{ item.rating.average }}分</p>
-              <p>导演:{{ item.directors[0].name}}</p>
+              <p>导演:{{ item.directors[0]?item.directors[0].name:'directors_name'}}</p>
               <p>
-                主演:{{ item.casts[0].name}}
+                主演:{{ item.casts[0]?item.casts[0].name:'casts_name'}}
                 <span v-if="item.casts[1]">, {{ item.casts[1].name }}</span>
               </p>
             </div>
